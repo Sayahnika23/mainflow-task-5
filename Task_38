@@ -1,0 +1,28 @@
+#Task 38: Rotate Matrix
+# Function to rotate the matrix
+def rotate_matrix(matrix):
+    return [list(row) for row in zip(*matrix[::-1])]
+
+# Get user input for the matrix
+n = int(input("Enter the size of the square matrix (n x n): "))
+matrix = []
+
+print("Enter the matrix row by row:")
+for _ in range(n):
+    matrix.append(list(map(int, input().split())))
+
+# Rotate and display the matrix
+rotated = rotate_matrix(matrix)
+print("Rotated Matrix:")
+for row in rotated:
+    print(row)
+
+Enter the size of the square matrix (n x n):  3
+Enter the matrix row by row:
+ 1 2 3
+ 4 5 6
+ 7 8 9
+Rotated Matrix:
+[7, 4, 1]
+[8, 5, 2]
+[9, 6, 3]
