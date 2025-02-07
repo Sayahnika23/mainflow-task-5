@@ -1,0 +1,75 @@
+#Task 5: Virtual Stock Market Simulator
+import random
+
+class StockMarketSimulator:
+    def __init__(self):
+        self.balance = 1000  # Starting money
+        self.portfolio = {}  # Holds stock quantities
+        self.stock_prices = {"AAPL": 100, "GOOG": 200, "AMZN": 300}  # Initial prices
+
+    def update_prices(self):
+        """Simulate random stock price changes."""
+        for stock in self.stock_prices:
+            self.stock_prices[stock] += random.randint(-10, 10)
+
+    def buy_stock(self, stock, quantity):
+        """Buy a stock if enough balance is available."""
+        if stock in self.stock_prices:
+            cost = self.stock_prices[stock] * quantity
+            if self.balance >= cost:
+                self.balance -= cost
+                self.portfolio[stock] = self.portfolio.get(stock, 0) + quantity
+                print(f"Bought {quantity} shares of {stock} at ${self.stock_prices[stock]}")
+            else:
+                print("Not enough balance!")
+        else:
+            print("Invalid stock symbol!")
+
+    def sell_stock(self, stock, quantity):
+        """Sell stock if enough shares are available."""
+        if stock in self.portfolio and self.portfolio[stock] >= quantity:
+            self.balance += self.stock_prices[stock] * quantity
+            self.portfolio[stock] -= quantity
+            print(f"Sold {quantity} shares of {stock} at ${self.stock_prices[stock]}")
+        else:
+            print("Not enough shares!")
+
+    def display_portfolio(self):
+        """Show balance and stock holdings."""
+        print(f"\nBalance: ${self.balance}")
+        print("Portfolio:", self.portfolio)
+        print("Stock Prices:", self.stock_prices)
+
+# Main simulation loop
+market = StockMarketSimulator()
+
+while True:
+    market.update_prices()
+    market.display_portfolio()
+    
+    action = input("\nEnter action (buy/sell/exit): ").lower()
+    if action == "exit":
+        break
+    elif action in ["buy", "sell"]:
+        stock = input("Enter stock symbol (AAPL, GOOG, AMZN): ").upper()
+        quantity = int(input("Enter quantity: "))
+        
+        if action == "buy":
+            market.buy_stock(stock, quantity)
+        else:
+            market.sell_stock(stock, quantity)
+
+Balance: $1000
+Portfolio: {}
+Stock Prices: {'AAPL': 106, 'GOOG': 199, 'AMZN': 302}
+
+Enter action (buy/sell/exit):  buy
+Enter stock symbol (AAPL, GOOG, AMZN):  AAPL
+Enter quantity:  3
+Bought 3 shares of AAPL at $106
+
+Balance: $682
+Portfolio: {'AAPL': 3}
+Stock Prices: {'AAPL': 109, 'GOOG': 197, 'AMZN': 295}
+
+Enter action (buy/sell/exit):  exit
