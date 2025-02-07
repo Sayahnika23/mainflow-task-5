@@ -1,0 +1,13 @@
+#Task 37: Find K Largest Elements
+# Get user input
+nums = list(map(int, input("Enter numbers separated by spaces: ").split()))
+k = int(input("Enter the value of k: "))
+
+# Sort the list in descending order and take the first k elements
+largest_k = sorted(nums, reverse=True)[:k]
+
+print("K largest elements:", largest_k)
+
+Enter numbers separated by spaces:  10 5 8 20 15 3
+Enter the value of k:  3
+K largest elements: [20, 15, 10]
