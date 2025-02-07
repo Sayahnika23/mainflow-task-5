@@ -1,0 +1,11 @@
+#Task 35: Find Duplicates in a List
+# Get user input
+nums = list(map(int, input("Enter numbers separated by spaces: ").split()))
+
+# Find duplicates using a dictionary
+duplicates = list({num for num in nums if nums.count(num) > 1})
+
+print("Duplicates:", duplicates)
+
+Enter numbers separated by spaces:  1 2 3 4 5 2 3 6 7 8 1
+Duplicates: [1, 2, 3]
