@@ -1,0 +1,20 @@
+#Task 34: N-th Fibonacci Number (Dynamic Programming)
+# Get user input
+n = int(input("Enter the value of n: "))
+
+# Handle base cases
+if n <= 0:
+    print("Invalid input")
+elif n == 1:
+    print(0)
+elif n == 2:
+    print(1)
+else:
+    # Bottom-up DP approach
+    fib = [0, 1]  # Initialize base values
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])  # Compute Fibonacci numbers iteratively
+    print(fib[-1])  # Print the N-th Fibonacci number
+
+Enter the value of n:  10
+34
