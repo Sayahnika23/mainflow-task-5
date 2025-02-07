@@ -1,0 +1,12 @@
+#Task 33: Find all Permutations of a String
+from itertools import permutations
+
+# Get user input
+s = input("Enter a string: ")
+
+# Generate and display permutations
+perm_list = [''.join(p) for p in permutations(s)]
+print(perm_list)
+
+Enter a string:  xyz
+['xyz', 'xzy', 'yxz', 'yzx', 'zxy', 'zyx']
